@@ -34,7 +34,7 @@ sha1sums=('b5a4507f85ebb7bac589db2e07d9bc40106720d9'
           'b7fde1c46af45e831828738874f14b092b1e795f'
           'f478acf3662aab3f5b1703a4a29bcfe055dbdd66'
           '69b77c0b4b4587117f3a6e240a5bd6389ed40be3'
-          '5b37be933d9b6cc1f7e3129a69c338d232bf7808')
+          'de00a19c225a5d208dcb6217dd30036d41e464f8')
 
 prepare() {
   cd ${srcdir}

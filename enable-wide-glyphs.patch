@@ -133,7 +133,7 @@ index 19e4fccf..75853d75 100644
      }
  
 diff --git a/src/rxvtfont.C b/src/rxvtfont.C
-index c56921c8..9d75541a 100644
+index 46bf6da..02fe5c8 100644
 --- a/src/rxvtfont.C
 +++ b/src/rxvtfont.C
 @@ -471,6 +471,7 @@ rxvt_font_default::draw (rxvt_drawable &d, int x, int y,
@@ -144,7 +144,7 @@ index c56921c8..9d75541a 100644
              case '\t':
              case ZERO_WIDTH_CHAR:
              case NOCHAR:
-@@ -1026,8 +1027,10 @@ rxvt_font_x11::has_char (unicode_t unicode, const rxvt_fontprop *prop, bool &car
+@@ -1037,8 +1038,10 @@ rxvt_font_x11::has_char (unicode_t unicode, const rxvt_fontprop *prop, bool &car
  
    careful = xcs->lbearing < 0 || xcs->rbearing > prop->width * wcw;
  
@@ -155,7 +155,7 @@ index c56921c8..9d75541a 100644
  
    return true;
  }
-@@ -1345,12 +1348,14 @@ rxvt_font_xft::has_char (unicode_t unicode, const rxvt_fontprop *prop, bool &car
+@@ -1389,12 +1392,14 @@ rxvt_font_xft::has_char (unicode_t unicode, const rxvt_fontprop *prop, bool &car
  
    careful = g.x > 0 || w > prop->width * wcw;
  
@@ -170,17 +170,17 @@ index c56921c8..9d75541a 100644
  
    return true;
  }
-@@ -1395,6 +1400,10 @@ rxvt_font_xft::draw (rxvt_drawable &d, int x, int y,
+@@ -1461,6 +1466,10 @@ rxvt_font_xft::draw (rxvt_drawable &d, int x, int y,
  
            ep->glyph = glyph;
-           ep->x = x_ + (cwidth - extents.xOff >> 1);
+           ep->x = x_;
 +#if ENABLE_WIDE_GLYPHS
 +          /* Left-align to bounding box, do not overlap to the left. */
 +          max_it(ep->x, x_);
 +#endif
            ep->y = y_ + ascent;
  
-           if (extents.xOff == 0)
+           // the xft font cell might differ from the terminal font cell,
 diff --git a/src/screen.C b/src/screen.C
 index 115afbf2..61681b84 100644
 --- a/src/screen.C
