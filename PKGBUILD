@@ -8,13 +8,13 @@
 
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-cvs-patched-wideglyphs
-pkgver=20170412
-pkgrel=6
+pkgver=20210619
+pkgrel=1
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing and wide glyphs patch (cvs version)'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
-depends=('libxft' 'perl' 'startup-notification' 'rxvt-unicode-terminfo')
+depends=('libxt' 'libxft' 'perl' 'startup-notification' 'rxvt-unicode-terminfo')
 makedepends=('cvs')
 optdepends=('gtk2-perl: to use the urxvt-tabbed')
 provides=(rxvt-unicode)
